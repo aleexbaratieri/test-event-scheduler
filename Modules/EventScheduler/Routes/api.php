@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', function() {
-    return response()->json(['msg' => 'Welcome!']);
+Route::middleware('auth:api')->get('/eventscheduler', function (Request $request) {
+    return $request->user();
 });

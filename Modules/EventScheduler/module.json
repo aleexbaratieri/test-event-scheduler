@@ -1,0 +1,13 @@
+{
+    "name": "EventScheduler",
+    "alias": "eventscheduler",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\EventScheduler\\Providers\\EventSchedulerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
