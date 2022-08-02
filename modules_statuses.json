@@ -1,3 +1,4 @@
 {
-    "EventScheduler": true
+    "EventScheduler": true,
+    "Controller": true
 }
