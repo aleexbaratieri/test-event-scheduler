@@ -47,9 +47,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('EventScheduler', '/Routes/web.php'));
+        //
     }
 
     /**
@@ -61,9 +59,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('EventScheduler', '/Routes/api.php'));
+        Route::prefix('api')->middleware('api')->namespace($this->namespace)->group(module_path('EventScheduler', '/Routes/api.php'));
     }
 }
