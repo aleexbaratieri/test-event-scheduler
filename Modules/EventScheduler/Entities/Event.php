@@ -43,7 +43,7 @@ class Event extends Model
      */
     public function setEventTimeAttribute($value)
     {
-        $this->attributes['event_time'] = Carbon::createFromFormat('d/m/Y H:i', $value);
+        $this->attributes['event_time'] = Carbon::createFromFormat('d/m/Y H:i', $value)->timestamp;
     }
 
    /**
@@ -54,6 +54,6 @@ class Event extends Model
      */
     public function getEventTimeAttribute($value)
     {
-        return Carbon::make($value)->format('d/m/Y H:i');
+        return Carbon::createFromTimestamp($value)->format('d/m/Y H:i');
     }
 }

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->text('description');
-            $table->timestamp('event_time');
+            $table->bigInteger('event_time')->index();
             $table->string('email_to_notification');
             $table->boolean('sent')->default(false);
-            $table->timestamp('sent_time')->nullable();
+            $table->bigInteger('sent_time')->nullable()->index();
             $table->timestamps();
         });
     }
