@@ -2,10 +2,14 @@
 
 namespace Modules\EventScheduler\Database\factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class EventFactory extends Factory
 {
+    use WithFaker;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -21,7 +25,10 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'description' => $this->faker->sentence,
+            "event_time" => $this->faker->date('m/d/Y H:i', Carbon::now()->addYear()),
+            "email_to_notification" => $this->faker->email
         ];
     }
 }
