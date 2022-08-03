@@ -2,6 +2,7 @@
 
 namespace Modules\EventScheduler\Jobs;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -35,6 +36,18 @@ class SendEventMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->event->email_to_notification)->send(new EventMail($this->event));
+        try {
+            
+            Mail::to($this->event->email_to_notification)->send(new EventMail($this->event));
+            
+            $this->event->update([
+                'sent' => true,
+                'sent_time' => Carbon::now()->timestamp
+            ]);
+        
+        } catch (\Exception $err) {
+
+            Log::error($err->getMessage());
+        }
     }
 }
