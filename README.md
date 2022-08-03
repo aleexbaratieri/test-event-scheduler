@@ -31,6 +31,30 @@ Entre no diretório do laradock
 cd laradock/
 ```
 
+Crie o arquivo do Supervisor para o php-worker
+```sh
+cd php-worker/
+```
+```sh
+cd supervisord.d/
+```
+```sh
+mv laravel-worker.conf.example laravel-worker.conf
+```
+
+Edite o arquivo `laravel-worker.conf` com o seguinte código
+```sh
+[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/artisan queue:work --sleep=3 --tries=3 --daemon
+autostart=true
+autorestart=true
+numprocs=2
+user=laradock
+redirect_stderr=true
+```
+
+
 Execute o docker-compose
 ```sh
 docker-compose up -d nginx mysql php-fpm redis php-worker --build
@@ -70,4 +94,9 @@ touch database/database.sqlite
 ```
 ```sh
 php artisan test
+```
+
+### Http File
+```
+events.http
 ```
