@@ -55,6 +55,6 @@ class EventRepository extends Repository
 
     public function nextEvents($minutes = 10) : mixed
     {
-        return $this->entity->where('sent', false)->where('event_time', '<=', Carbon::now()->addMinutes($minutes)->timestamp)->get();
+        return $this->entity->where('sent', false)->where('event_time', '>=', Carbon::now()->timestamp)->where('event_time', '<=', Carbon::now()->addMinutes($minutes)->timestamp)->get();
     }
 }
