@@ -4,16 +4,16 @@ Siga as intruções abaixo para executar o projeto
 
 Clone Repositório da aplicação
 ```sh
-git clone 
+git clone git@github.com:aleexbaratieri/test-event-scheduler.git laravel-app
 ```
 
 ```sh
 cd laravel-app/
 ```
 
-Clone Repositório do laradock
+Adicione o Repositório do laradock
 ```sh
-git clone 
+git submodule add https://github.com/Laradock/laradock.git laradock
 ```
 
 Gere o .env do projeto, ajuste os parametros se for necessário
