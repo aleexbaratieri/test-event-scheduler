@@ -54,6 +54,9 @@ user=laradock
 redirect_stderr=true
 ```
 
+```sh
+cd ..
+```
 
 Execute o docker-compose
 ```sh
